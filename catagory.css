@@ -1,1 +1,46 @@
 
+* { margin:0; padding:0; box-sizing:border-box; font-family:"Poppins",sans-serif; }
+body {
+  background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+  color: #fff; overflow-x:hidden; position:relative;
+}
+
+/* Background glow */
+.glow { 
+  position:absolute; width:700px; height:700px; border-radius:50%; 
+  background: radial-gradient(circle, rgba(0,255,255,0.25), transparent 70%); 
+  filter: blur(150px); animation: float 8s infinite alternate ease-in-out; z-index:0; 
+}
+.glow:nth-child(1){ top:-100px; left:-100px; }
+.glow:nth-child(2){ bottom:-100px; right:-100px; animation-delay:2s; }
+
+@keyframes float { from{transform:translateY(-40px) translateX(-30px);} to{transform:translateY(40px) translateX(30px);} }
+
+/* Navigation */
+header { display:flex; justify-content:space-between; align-items:center; padding:2rem 5%; position:relative; z-index:2; }
+.logo { font-size:2rem; font-weight:700; color:#00ffff; text-shadow:0 0 10px #00ffff; }
+nav a { color:#fff; margin-left:2rem; text-decoration:none; font-weight:500; position:relative; }
+nav a::after { content:""; position:absolute; left:0; bottom:-4px; width:0%; height:2px; background:#00ffff; transition:0.3s; }
+nav a:hover::after { width:100%; }
+
+/* Category Grid */
+.category-section { padding:4rem 8%; position:relative; z-index:2; }
+.category-title { text-align:center; font-size:2.5rem; margin-bottom:2rem; color:#00ffff; text-shadow:0 0 15px rgba(0,255,255,0.5); }
+.category-grid { display:grid; grid-template-columns:repeat(auto-fit, minmax(250px, 1fr)); gap:2rem; }
+
+.category-box {
+  background: rgba(255,255,255,0.08);
+  border:1px solid rgba(0,255,255,0.3);
+  border-radius:15px; padding:2rem; text-align:center; cursor:pointer;
+  transition:0.4s; backdrop-filter: blur(10px);
+}
+.category-box:hover { transform:translateY(-10px); box-shadow:0 0 20px rgba(0,255,255,0.4); }
+.category-box img { width:80px; margin-bottom:1rem; filter:drop-shadow(0 0 10px #00ffff); }
+.category-box h3 { color:#00ffff; margin-bottom:0.5rem; }
+.category-box p { opacity:0.8; font-size:0.95rem; }
+
+/* Footer */
+footer { text-align:center; padding:2rem; opacity:0.6; font-size:0.9rem; z-index:2; position:relative; }
+
+@media(max-width:900px){ .category-grid { grid-template-columns:1fr 1fr; } }
+@media(max-width:600px){ .category-grid { grid-template-columns:1fr; } }
