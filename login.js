@@ -71,4 +71,3 @@ signupForm.addEventListener('submit', function(e){
   // Switch to login form automatically
   loginBtn.click();
 });
-
