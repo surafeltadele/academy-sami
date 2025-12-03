@@ -16,15 +16,15 @@
 
   <!-- Navigation Header -->
   <header>
-    <div class="logo" onclick="app.nav('home')">NeoQuiz</div>
-    <nav>
-      <a href="#" onclick="app.nav('home')">Home</a>
-      <a href="#" onclick="app.nav('categories')">Categories</a>
-      <a href="#" onclick="app.nav('leaderboard')">Leaderboard</a>
-      <a href="#" onclick="app.nav('login')">Login/Sign Up</a>
-    </nav>
-  </header>
-
+  <div class="logo" onclick="app.nav('home')">NeoQuiz</div>
+  <nav>
+    <a href="#" onclick="app.nav('home')">Home</a>
+    <a href="#" onclick="app.nav('categories')">Categories</a>
+    <!-- CHANGED LINE BELOW -->
+    <a href="#" onclick="app.nav('calculator')">GPA Calculator</a> 
+    <a href="#" onclick="app.nav('login')">Login</a>
+  </nav>
+</header>
   <main>
     <!-- VIEW: HOME -->
    <!-- VIEW: HOME (Taller Version) -->
@@ -274,7 +274,63 @@
         </div>
       </div>
     </section>
+    <!-- VIEW: GPA CALCULATOR -->
+ <!-- VIEW: GPA CALCULATOR -->
+    <section id="view-calculator" class="hidden-view">
+      <div class="calc-container">
+        <h1 class="category-title">GPA Calculator</h1>
+        
+        <!-- NEW: Recommended Courses Section -->
+        <div class="rec-container">
+          <p style="color:#00ffff; margin-bottom:0.5rem;">Quick Select Course:</p>
+          <div class="sem-toggles">
+            <button class="sem-btn active" onclick="gpaCalc.loadSem(1)">Freshman Sem 1</button>
+            <button class="sem-btn" onclick="gpaCalc.loadSem(2)">Freshman Sem 2</button>
+          </div>
+          <div id="courseChips" class="course-chips">
+            <!-- Chips injected via JS -->
+          </div>
+        </div>
 
+        <!-- Input Section -->
+        <div class="calc-inputs">
+          <input type="text" id="courseName" placeholder="Course Name" />
+          <input type="number" id="courseCredit" placeholder="Cr. Hrs" />
+          <select id="courseGrade">
+            <option value="" disabled selected>Grade</option>
+            <option value="4.0">A / A+</option>
+            <option value="3.75">A-</option>
+            <option value="3.5">B+</option>
+            <option value="3.0">B</option>
+            <option value="2.75">B-</option>
+            <option value="2.5">C+</option>
+            <option value="2.0">C</option>
+            <option value="1.75">C-</option>
+            <option value="1.0">D</option>
+            <option value="0.0">F</option>
+          </select>
+          <button class="btn" onclick="gpaCalc.addCourse()">Add</button>
+        </div>
+
+        <div id="calcError" class="error" style="text-align:center; margin-bottom:1rem;"></div>
+
+        <!-- Course List & Result (Same as before) -->
+        <div class="course-list-container">
+          <table class="course-table">
+            <thead>
+              <tr><th>Subject</th><th>Credit</th><th>Grade</th><th>Action</th></tr>
+            </thead>
+            <tbody id="courseTableBody"></tbody>
+          </table>
+        </div>
+
+        <div class="gpa-result">
+          <h3>Your Semester GPA</h3>
+          <h1 id="gpaValue">0.00</h1>
+          <button class="btn" style="background:transparent; font-size:0.9rem; padding:0.5rem 1rem;" onclick="gpaCalc.clearAll()">Reset All</button>
+        </div>
+      </div>
+    </section>
     <!-- VIEW: QUIZ -->
     <section id="view-quiz" class="hidden-view">
       <button class="back-btn" onclick="app.nav('courses')">← Quit Quiz</button>
